@@ -1,7 +1,7 @@
 {
-  "name": "shopping_list",
+  "name": "mern_shopping_list",
   "version": "1.0.0",
-  "description": "Shoping List with mern stack",
+  "description": "Shopping list built with the MERN stack",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -9,14 +9,19 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client npm install --prefix client"
   },
   "author": "Alejandro Balderas",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "concurrently": "^4.1.2",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.3"
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^3.6.0",
+    "config": "^3.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }
