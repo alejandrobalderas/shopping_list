@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -10,19 +10,25 @@ import store from "./store";
 import ItemModal from "./components/ItemModal";
 
 import { Container } from "reactstrap";
+import { loadUser } from "./actions/authActions";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <div className="App">
-        <AppNavbar />
-        <Container>
-          <ItemModal />
-          <ShoppingList />
-        </Container>
-      </div>
-    </Provider>
-  );
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <AppNavbar />
+          <Container>
+            <ItemModal />
+            <ShoppingList />
+          </Container>
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;

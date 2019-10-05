@@ -1,4 +1,0 @@
-module.exports = {
-  mongoURI:
-    "mongodb+srv://balderas:balderas@smartmirror-s2k7q.gcp.mongodb.net/shoppinglist?retryWrites=true&w=majority"
-};
