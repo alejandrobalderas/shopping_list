@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const config = require("config");
+const config = require("dotenv").config().parsed;
 const jwt = require("jsonwebtoken");
 
 // Item Model
@@ -37,7 +37,7 @@ router.post("/", (req, res) => {
         newUser.save().then(user => {
           jwt.sign(
             { id: user.id },
-            config.get("jwtSecret"),
+            config.JWTSECRET,
             {
               expiresIn: 10000
             },
