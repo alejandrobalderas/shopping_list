@@ -25,12 +25,12 @@ class ShoppingList extends Component {
     const { items } = this.props.item;
     return (
       <Container>
-        <ListGroup>
-          <TransitionGroup className="shopping-list">
-            {items.map(({ _id, name }) => (
-              <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                  {this.props.isAuthenticated ? (
+        {this.props.isAuthenticated ? (
+          <ListGroup>
+            <TransitionGroup className="shopping-list">
+              {items.map(({ _id, name }) => (
+                <CSSTransition key={_id} timeout={500} classNames="fade">
+                  <ListGroupItem>
                     <Button
                       className="remove-btn"
                       color="danger"
@@ -39,13 +39,13 @@ class ShoppingList extends Component {
                     >
                       &times;
                     </Button>
-                  ) : null}
-                  {name}
-                </ListGroupItem>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </ListGroup>
+                    {name}
+                  </ListGroupItem>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </ListGroup>
+        ) : null}
       </Container>
     );
   }

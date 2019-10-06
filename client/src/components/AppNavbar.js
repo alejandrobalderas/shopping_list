@@ -30,6 +30,10 @@ class AppNavbar extends Component {
     });
   };
 
+  capitalizeFirstLetter = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
@@ -37,7 +41,9 @@ class AppNavbar extends Component {
       <Fragment>
         <NavItem>
           <span className="navbar-text mr-3">
-            <strong>{user ? `Welcome ${user.name}` : ""}</strong>
+            <strong>
+              {user ? `Welcome ${this.capitalizeFirstLetter(user.name)}` : ""}
+            </strong>
           </span>
         </NavItem>
         <NavItem>
@@ -48,9 +54,10 @@ class AppNavbar extends Component {
 
     const guestLinks = (
       <Fragment>
-        <NavItem>
+        {/* Uncomment to allow registration */}
+        {/* <NavItem>
           <RegisterModal />
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <LoginModal />
         </NavItem>
