@@ -6,14 +6,15 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Container
 } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import RegisterModal from "./auth/RegisterModal";
 import LoginModal from "./auth/LoginModal";
 import Logout from "./auth/Logout";
+
+// Uncomment to allow registration
+// import RegisterModal from "./auth/RegisterModal";
 
 class AppNavbar extends Component {
   state = {
