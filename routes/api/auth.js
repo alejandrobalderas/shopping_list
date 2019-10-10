@@ -12,15 +12,15 @@ const User = require("../../models/User");
 // @desc Register new user
 // @access Public
 router.post("/", (req, res) => {
-  const { name, password } = req.body;
+  const { username, password } = req.body;
 
   // Simple validation
-  if (!name || !password) {
+  if (!username || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
 
   // Check for existing user
-  User.findOne({ name }).then(user => {
+  User.findOne({ username }).then(user => {
     if (!user) {
       return res.status(400).json({ msg: "User does not exists" });
     }
@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
         { id: user.id },
         config.JWTSECRET,
         {
-          expiresIn: 10000
+          // expiresIn: 10000
         },
         (err, token) => {
           if (err) throw err;
@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
             token,
             user: {
               id: user.id,
-              name: user.name,
+              username: user.username,
               email: user.email
             }
           });

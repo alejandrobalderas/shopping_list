@@ -13,9 +13,9 @@ mongoose
   .then(() => console.log("DB Connected"))
   .catch(err => console.log(err));
 
-app.use("/api/items", require("./routes/api/items"));
-app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/items", require("./routes/api/items"));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

@@ -14,7 +14,9 @@ class ShoppingList extends Component {
   };
 
   componentDidMount() {
-    this.props.getItems();
+    setInterval(this.props.getItems, 3000);
+    // this.props.getItems();
+    // setInterval(console.log("repeat"), 3000);
   }
 
   onDeleteClick = id => {

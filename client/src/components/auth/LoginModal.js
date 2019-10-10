@@ -19,7 +19,7 @@ import { clearErrors } from "../../actions/errorActions";
 class LoginModal extends Component {
   state = {
     modal: false,
-    name: "",
+    username: "",
     password: "",
     msg: null
   };
@@ -64,9 +64,9 @@ class LoginModal extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { name, password } = this.state;
+    const { username, password } = this.state;
     const user = {
-      name,
+      username,
       password
     };
     // Attempt to login
@@ -88,12 +88,12 @@ class LoginModal extends Component {
             ) : null}
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="name">Name</Label>
+                <Label for="username">Username</Label>
                 <Input
                   type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Name"
+                  name="username"
+                  id="username"
+                  placeholder="Username"
                   className="mb-3"
                   onChange={this.onChange}
                 />

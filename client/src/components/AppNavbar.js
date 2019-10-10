@@ -43,7 +43,9 @@ class AppNavbar extends Component {
         <NavItem>
           <span className="navbar-text mr-3">
             <strong>
-              {user ? `Welcome ${this.capitalizeFirstLetter(user.name)}` : ""}
+              {user
+                ? `Welcome ${this.capitalizeFirstLetter(user.username)}`
+                : ""}
             </strong>
           </span>
         </NavItem>

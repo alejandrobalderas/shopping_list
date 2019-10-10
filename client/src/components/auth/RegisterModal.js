@@ -33,7 +33,7 @@ export class RegisterModal extends Component {
 
   state = {
     modal: false,
-    name: "",
+    username: "",
     email: "",
     password: "",
     msg: null
@@ -64,11 +64,11 @@ export class RegisterModal extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { name, email, password } = this.state;
+    const { username, email, password } = this.state;
 
     // Create user object
     const newUser = {
-      name,
+      username,
       email,
       password
     };
@@ -91,12 +91,12 @@ export class RegisterModal extends Component {
             ) : null}
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="name">Name:</Label>
+                <Label for="username">Username:</Label>
                 <Input
                   type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Name"
+                  name="namusername"
+                  id="username"
+                  placeholder="Username"
                   className="mb-3"
                   onChange={this.onChange}
                 ></Input>

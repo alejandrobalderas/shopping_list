@@ -7,7 +7,7 @@ const Item = require("../../models/Item");
 
 // @route GET api/items
 // @desc Get All items
-// @access Public
+// @access Private
 router.get("/", (req, res) => {
   Item.find()
     .sort({ date: -1 })
