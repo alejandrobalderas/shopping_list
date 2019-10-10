@@ -9,7 +9,7 @@ const auth = require("../../middleware/auth");
 const User = require("../../models/User");
 
 // @route POST api/auth
-// @desc Register new user
+// @desc Login user
 // @access Public
 router.post("/", (req, res) => {
   const { username, password } = req.body;
@@ -18,35 +18,37 @@ router.post("/", (req, res) => {
   if (!username || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
-
   // Check for existing user
-  User.findOne({ username }).then(user => {
-    if (!user) {
-      return res.status(400).json({ msg: "User does not exists" });
-    }
-    // Validate password
-    bcrypt.compare(password, user.password).then(isMatch => {
-      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
-      jwt.sign(
-        { id: user.id },
-        config.JWTSECRET,
-        {
-          // expiresIn: 10000
-        },
-        (err, token) => {
-          if (err) throw err;
-          res.json({
-            token,
-            user: {
-              id: user.id,
-              username: user.username,
-              email: user.email
-            }
-          });
-        }
-      );
-    });
-  });
+  User.findOne({ username })
+    .then(user => {
+      if (!username) {
+        return res.status(400).json({ msg: "User does not exists" });
+      }
+      // Validate password
+      bcrypt.compare(password, user.password).then(isMatch => {
+        if (!isMatch)
+          return res.status(400).json({ msg: "Invalid credentials" });
+        jwt.sign(
+          { id: user.id },
+          config.JWTSECRET,
+          {
+            // expiresIn: 10000
+          },
+          (err, token) => {
+            if (err) throw err;
+            res.json({
+              token,
+              user: {
+                id: user.id,
+                username: user.username,
+                email: user.email
+              }
+            });
+          }
+        );
+      });
+    })
+    .catch(err => console.log(err));
 });
 
 // @route GET api/auth/user

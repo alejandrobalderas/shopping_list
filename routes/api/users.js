@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
             { id: user.id },
             config.JWTSECRET,
             {
-              expiresIn: 10000
+              // expiresIn: 10000
             },
             (err, token) => {
               if (err) throw err;
