@@ -11,7 +11,7 @@ const { mongo_uri } = require("./config");
 mongoose
   .connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("DB Connected"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/users", require("./routes/api/users"));
@@ -30,5 +30,5 @@ if (process.env.NODE_ENV === "production") {
   console.log("Serving in development");
 }
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Service started on port: ${port}`));
